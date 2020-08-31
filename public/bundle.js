@@ -289,9 +289,9 @@
         }
         var ReactDebugCurrentFrame = {};
         var currentlyValidatingElement = null;
-        function setCurrentlyValidatingElement(element) {
+        function setCurrentlyValidatingElement(element2) {
           {
-            currentlyValidatingElement = element;
+            currentlyValidatingElement = element2;
           }
         }
         {
@@ -533,7 +533,7 @@
           }
         }
         var ReactElement = function(type, key, ref, self, source, owner, props) {
-          var element = {
+          var element2 = {
             $$typeof: REACT_ELEMENT_TYPE,
             type,
             key,
@@ -542,31 +542,31 @@
             _owner: owner
           };
           {
-            element._store = {};
-            Object.defineProperty(element._store, "validated", {
+            element2._store = {};
+            Object.defineProperty(element2._store, "validated", {
               configurable: false,
               enumerable: false,
               writable: true,
               value: false
             });
-            Object.defineProperty(element, "_self", {
+            Object.defineProperty(element2, "_self", {
               configurable: false,
               enumerable: false,
               writable: false,
               value: self
             });
-            Object.defineProperty(element, "_source", {
+            Object.defineProperty(element2, "_source", {
               configurable: false,
               enumerable: false,
               writable: false,
               value: source
             });
             if (Object.freeze) {
-              Object.freeze(element.props);
-              Object.freeze(element);
+              Object.freeze(element2.props);
+              Object.freeze(element2);
             }
           }
-          return element;
+          return element2;
         };
         function createElement2(type, config, children) {
           var propName;
@@ -633,19 +633,19 @@
           var newElement = ReactElement(oldElement.type, newKey, oldElement.ref, oldElement._self, oldElement._source, oldElement._owner, oldElement.props);
           return newElement;
         }
-        function cloneElement(element, config, children) {
-          if (!!(element === null || element === void 0)) {
+        function cloneElement(element2, config, children) {
+          if (!!(element2 === null || element2 === void 0)) {
             {
-              throw Error("React.cloneElement(...): The argument must be a React element, but you passed " + element + ".");
+              throw Error("React.cloneElement(...): The argument must be a React element, but you passed " + element2 + ".");
             }
           }
           var propName;
-          var props = _assign({}, element.props);
-          var key = element.key;
-          var ref = element.ref;
-          var self = element._self;
-          var source = element._source;
-          var owner = element._owner;
+          var props = _assign({}, element2.props);
+          var key = element2.key;
+          var ref = element2.ref;
+          var self = element2._self;
+          var source = element2._source;
+          var owner = element2._owner;
           if (config != null) {
             if (hasValidRef(config)) {
               ref = config.ref;
@@ -655,8 +655,8 @@
               key = "" + config.key;
             }
             var defaultProps;
-            if (element.type && element.type.defaultProps) {
-              defaultProps = element.type.defaultProps;
+            if (element2.type && element2.type.defaultProps) {
+              defaultProps = element2.type.defaultProps;
             }
             for (propName in config) {
               if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
@@ -678,7 +678,7 @@
             }
             props.children = childArray;
           }
-          return ReactElement(element.type, key, ref, self, source, owner, props);
+          return ReactElement(element2.type, key, ref, self, source, owner, props);
         }
         function isValidElement(object) {
           return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
@@ -1143,21 +1143,21 @@
           }
           return info;
         }
-        function validateExplicitKey(element, parentType) {
-          if (!element._store || element._store.validated || element.key != null) {
+        function validateExplicitKey(element2, parentType) {
+          if (!element2._store || element2._store.validated || element2.key != null) {
             return;
           }
-          element._store.validated = true;
+          element2._store.validated = true;
           var currentComponentErrorInfo = getCurrentComponentErrorInfo(parentType);
           if (ownerHasKeyUseWarning[currentComponentErrorInfo]) {
             return;
           }
           ownerHasKeyUseWarning[currentComponentErrorInfo] = true;
           var childOwner = "";
-          if (element && element._owner && element._owner !== ReactCurrentOwner.current) {
-            childOwner = " It was passed a child from " + getComponentName(element._owner.type) + ".";
+          if (element2 && element2._owner && element2._owner !== ReactCurrentOwner.current) {
+            childOwner = " It was passed a child from " + getComponentName(element2._owner.type) + ".";
           }
-          setCurrentlyValidatingElement(element);
+          setCurrentlyValidatingElement(element2);
           {
             error('Each child in a list should have a unique "key" prop.%s%s See https://fb.me/react-warning-keys for more information.', currentComponentErrorInfo, childOwner);
           }
@@ -1193,9 +1193,9 @@
             }
           }
         }
-        function validatePropTypes(element) {
+        function validatePropTypes(element2) {
           {
-            var type = element.type;
+            var type = element2.type;
             if (type === null || type === void 0 || typeof type === "string") {
               return;
             }
@@ -1209,8 +1209,8 @@
               return;
             }
             if (propTypes) {
-              setCurrentlyValidatingElement(element);
-              checkPropTypes(propTypes, element.props, "prop", name, ReactDebugCurrentFrame.getStackAddendum);
+              setCurrentlyValidatingElement(element2);
+              checkPropTypes(propTypes, element2.props, "prop", name, ReactDebugCurrentFrame.getStackAddendum);
               setCurrentlyValidatingElement(null);
             } else if (type.PropTypes !== void 0 && !propTypesMisspellWarningShown) {
               propTypesMisspellWarningShown = true;
@@ -1266,9 +1266,9 @@
               error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
             }
           }
-          var element = createElement2.apply(this, arguments);
-          if (element == null) {
-            return element;
+          var element2 = createElement2.apply(this, arguments);
+          if (element2 == null) {
+            return element2;
           }
           if (validType) {
             for (var i = 2; i < arguments.length; i++) {
@@ -1276,11 +1276,11 @@
             }
           }
           if (type === REACT_FRAGMENT_TYPE) {
-            validateFragmentProps(element);
+            validateFragmentProps(element2);
           } else {
-            validatePropTypes(element);
+            validatePropTypes(element2);
           }
-          return element;
+          return element2;
         }
         var didWarnAboutDeprecatedCreateFactory = false;
         function createFactoryWithValidation(type) {
@@ -1304,7 +1304,7 @@
           }
           return validatedFactory;
         }
-        function cloneElementWithValidation(element, props, children) {
+        function cloneElementWithValidation(element2, props, children) {
           var newElement = cloneElement.apply(this, arguments);
           for (var i = 2; i < arguments.length; i++) {
             validateChildKeys(arguments[i], newElement.type);
@@ -3581,8 +3581,8 @@
           var usesChecked = props.type === "checkbox" || props.type === "radio";
           return usesChecked ? props.checked != null : props.value != null;
         }
-        function getHostProps(element, props) {
-          var node = element;
+        function getHostProps(element2, props) {
+          var node = element2;
           var checked = props.checked;
           var hostProps = _assign({}, props, {
             defaultChecked: void 0,
@@ -3592,7 +3592,7 @@
           });
           return hostProps;
         }
-        function initWrapperState(element, props) {
+        function initWrapperState(element2, props) {
           {
             ReactControlledValuePropTypes.checkPropTypes("input", props);
             if (props.checked !== void 0 && props.defaultChecked !== void 0 && !didWarnCheckedDefaultChecked) {
@@ -3604,7 +3604,7 @@
               didWarnValueDefaultValue = true;
             }
           }
-          var node = element;
+          var node = element2;
           var defaultValue = props.defaultValue == null ? "" : props.defaultValue;
           node._wrapperState = {
             initialChecked: props.checked != null ? props.checked : props.defaultChecked,
@@ -3612,15 +3612,15 @@
             controlled: isControlled(props)
           };
         }
-        function updateChecked(element, props) {
-          var node = element;
+        function updateChecked(element2, props) {
+          var node = element2;
           var checked = props.checked;
           if (checked != null) {
             setValueForProperty(node, "checked", checked, false);
           }
         }
-        function updateWrapper(element, props) {
-          var node = element;
+        function updateWrapper(element2, props) {
+          var node = element2;
           {
             var controlled = isControlled(props);
             if (!node._wrapperState.controlled && controlled && !didWarnUncontrolledToControlled) {
@@ -3632,7 +3632,7 @@
               didWarnControlledToUncontrolled = true;
             }
           }
-          updateChecked(element, props);
+          updateChecked(element2, props);
           var value = getToStringValue(props.value);
           var type = props.type;
           if (value != null) {
@@ -3660,8 +3660,8 @@
             }
           }
         }
-        function postMountWrapper(element, props, isHydrating2) {
-          var node = element;
+        function postMountWrapper(element2, props, isHydrating2) {
+          var node = element2;
           if (props.hasOwnProperty("value") || props.hasOwnProperty("defaultValue")) {
             var type = props.type;
             var isButton = type === "submit" || type === "reset";
@@ -3692,8 +3692,8 @@
             node.name = name;
           }
         }
-        function restoreControlledState(element, props) {
-          var node = element;
+        function restoreControlledState(element2, props) {
+          var node = element2;
           updateWrapper(node, props);
           updateNamedCousins(node, props);
         }
@@ -3742,7 +3742,7 @@
           });
           return content;
         }
-        function validateProps(element, props) {
+        function validateProps(element2, props) {
           {
             if (typeof props.children === "object" && props.children !== null) {
               React2.Children.forEach(props.children, function(child) {
@@ -3767,12 +3767,12 @@
             }
           }
         }
-        function postMountWrapper$1(element, props) {
+        function postMountWrapper$1(element2, props) {
           if (props.value != null) {
-            element.setAttribute("value", toString(getToStringValue(props.value)));
+            element2.setAttribute("value", toString(getToStringValue(props.value)));
           }
         }
-        function getHostProps$1(element, props) {
+        function getHostProps$1(element2, props) {
           var hostProps = _assign({
             children: void 0
           }, props);
@@ -3848,13 +3848,13 @@
             }
           }
         }
-        function getHostProps$2(element, props) {
+        function getHostProps$2(element2, props) {
           return _assign({}, props, {
             value: void 0
           });
         }
-        function initWrapperState$1(element, props) {
-          var node = element;
+        function initWrapperState$1(element2, props) {
+          var node = element2;
           {
             checkSelectPropTypes(props);
           }
@@ -3868,8 +3868,8 @@
             }
           }
         }
-        function postMountWrapper$2(element, props) {
-          var node = element;
+        function postMountWrapper$2(element2, props) {
+          var node = element2;
           node.multiple = !!props.multiple;
           var value = props.value;
           if (value != null) {
@@ -3878,8 +3878,8 @@
             updateOptions(node, !!props.multiple, props.defaultValue, true);
           }
         }
-        function postUpdateWrapper(element, props) {
-          var node = element;
+        function postUpdateWrapper(element2, props) {
+          var node = element2;
           var wasMultiple = node._wrapperState.wasMultiple;
           node._wrapperState.wasMultiple = !!props.multiple;
           var value = props.value;
@@ -3893,16 +3893,16 @@
             }
           }
         }
-        function restoreControlledState$1(element, props) {
-          var node = element;
+        function restoreControlledState$1(element2, props) {
+          var node = element2;
           var value = props.value;
           if (value != null) {
             updateOptions(node, !!props.multiple, value, false);
           }
         }
         var didWarnValDefaultVal = false;
-        function getHostProps$3(element, props) {
-          var node = element;
+        function getHostProps$3(element2, props) {
+          var node = element2;
           if (!(props.dangerouslySetInnerHTML == null)) {
             {
               throw Error("`dangerouslySetInnerHTML` does not make sense on <textarea>.");
@@ -3915,8 +3915,8 @@
           });
           return hostProps;
         }
-        function initWrapperState$2(element, props) {
-          var node = element;
+        function initWrapperState$2(element2, props) {
+          var node = element2;
           {
             ReactControlledValuePropTypes.checkPropTypes("textarea", props);
             if (props.value !== void 0 && props.defaultValue !== void 0 && !didWarnValDefaultVal) {
@@ -3957,8 +3957,8 @@
             initialValue: getToStringValue(initialValue)
           };
         }
-        function updateWrapper$1(element, props) {
-          var node = element;
+        function updateWrapper$1(element2, props) {
+          var node = element2;
           var value = getToStringValue(props.value);
           var defaultValue = getToStringValue(props.defaultValue);
           if (value != null) {
@@ -3974,8 +3974,8 @@
             node.defaultValue = toString(defaultValue);
           }
         }
-        function postMountWrapper$3(element, props) {
-          var node = element;
+        function postMountWrapper$3(element2, props) {
+          var node = element2;
           var textContent = node.textContent;
           if (textContent === node._wrapperState.initialValue) {
             if (textContent !== "" && textContent !== null) {
@@ -3983,8 +3983,8 @@
             }
           }
         }
-        function restoreControlledState$2(element, props) {
-          updateWrapper$1(element, props);
+        function restoreControlledState$2(element2, props) {
+          updateWrapper$1(element2, props);
         }
         var HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
         var MATH_NAMESPACE = "http://www.w3.org/1998/Math/MathML";
@@ -4189,11 +4189,11 @@
         }
         var PossiblyWeakMap = typeof WeakMap === "function" ? WeakMap : Map;
         var elementListenerMap = new PossiblyWeakMap();
-        function getListenerMapForElement(element) {
-          var listenerMap = elementListenerMap.get(element);
+        function getListenerMapForElement(element2) {
+          var listenerMap = elementListenerMap.get(element2);
           if (listenerMap === void 0) {
             listenerMap = new Map();
-            elementListenerMap.set(element, listenerMap);
+            elementListenerMap.set(element2, listenerMap);
           }
           return listenerMap;
         }
@@ -4531,9 +4531,9 @@
           var eventName = "on" + eventNameSuffix;
           var isSupported = eventName in document;
           if (!isSupported) {
-            var element = document.createElement("div");
-            element.setAttribute(eventName, "return;");
-            isSupported = typeof element[eventName] === "function";
+            var element2 = document.createElement("div");
+            element2.setAttribute(eventName, "return;");
+            isSupported = typeof element2[eventName] === "function";
           }
           return isSupported;
         }
@@ -4939,11 +4939,11 @@
             }
           }
         }
-        function addEventBubbleListener(element, eventType, listener) {
-          element.addEventListener(eventType, listener, false);
+        function addEventBubbleListener(element2, eventType, listener) {
+          element2.addEventListener(eventType, listener, false);
         }
-        function addEventCaptureListener(element, eventType, listener) {
-          element.addEventListener(eventType, listener, true);
+        function addEventCaptureListener(element2, eventType, listener) {
+          element2.addEventListener(eventType, listener, true);
         }
         var simpleEventPluginEventTypes = {};
         var topLevelEventsToDispatchConfig = new Map();
@@ -4992,11 +4992,11 @@
         function isEnabled() {
           return _enabled;
         }
-        function trapBubbledEvent(topLevelType, element) {
-          trapEventForPluginEventSystem(element, topLevelType, false);
+        function trapBubbledEvent(topLevelType, element2) {
+          trapEventForPluginEventSystem(element2, topLevelType, false);
         }
-        function trapCapturedEvent(topLevelType, element) {
-          trapEventForPluginEventSystem(element, topLevelType, true);
+        function trapCapturedEvent(topLevelType, element2) {
+          trapEventForPluginEventSystem(element2, topLevelType, true);
         }
         function trapEventForPluginEventSystem(container, topLevelType, capture) {
           var listener;
@@ -7052,16 +7052,16 @@
         }
         function getActiveElementDeep() {
           var win = window;
-          var element = getActiveElement();
-          while (element instanceof win.HTMLIFrameElement) {
-            if (isSameOriginFrame(element)) {
-              win = element.contentWindow;
+          var element2 = getActiveElement();
+          while (element2 instanceof win.HTMLIFrameElement) {
+            if (isSameOriginFrame(element2)) {
+              win = element2.contentWindow;
             } else {
-              return element;
+              return element2;
             }
-            element = getActiveElement(win.document);
+            element2 = getActiveElement(win.document);
           }
-          return element;
+          return element2;
         }
         function hasSelectionCapabilities(elem) {
           var nodeName = elem && elem.nodeName && elem.nodeName.toLowerCase();
@@ -10049,13 +10049,13 @@
             return family.current;
           }
         }
-        function isCompatibleFamilyForHotReloading(fiber, element) {
+        function isCompatibleFamilyForHotReloading(fiber, element2) {
           {
             if (resolveFamily === null) {
               return false;
             }
             var prevType = fiber.elementType;
-            var nextType = element.type;
+            var nextType = element2.type;
             var needsCompareFamilies = false;
             var $$typeofNextType = typeof nextType === "object" && nextType !== null ? nextType.$$typeof : null;
             switch (fiber.tag) {
@@ -10128,14 +10128,14 @@
             });
           }
         };
-        var scheduleRoot = function(root2, element) {
+        var scheduleRoot = function(root2, element2) {
           {
             if (root2.context !== emptyContextObject) {
               return;
             }
             flushPassiveEffects();
             syncUpdates(function() {
-              updateContainer(element, root2, null, null);
+              updateContainer(element2, root2, null, null);
             });
           }
         };
@@ -11358,11 +11358,11 @@
           };
         }
         var isArray$1 = Array.isArray;
-        function coerceRef(returnFiber, current2, element) {
-          var mixedRef = element.ref;
+        function coerceRef(returnFiber, current2, element2) {
+          var mixedRef = element2.ref;
           if (mixedRef !== null && typeof mixedRef !== "function" && typeof mixedRef !== "object") {
             {
-              if ((returnFiber.mode & StrictMode || warnAboutStringRefs) && !(element._owner && element._self && element._owner.stateNode !== element._self)) {
+              if ((returnFiber.mode & StrictMode || warnAboutStringRefs) && !(element2._owner && element2._self && element2._owner.stateNode !== element2._self)) {
                 var componentName = getComponentName(returnFiber.type) || "Component";
                 if (!didWarnAboutStringRefs[componentName]) {
                   {
@@ -11372,8 +11372,8 @@
                 }
               }
             }
-            if (element._owner) {
-              var owner = element._owner;
+            if (element2._owner) {
+              var owner = element2._owner;
               var inst;
               if (owner) {
                 var ownerFiber = owner;
@@ -11412,7 +11412,7 @@
                   throw Error("Expected ref to be a function, a string, an object returned by React.createRef(), or null.");
                 }
               }
-              if (!element._owner) {
+              if (!element2._owner) {
                 {
                   throw Error("Element ref was specified as a string (" + mixedRef + ") but no owner was set. This could happen for one of the following reasons:\n1. You may be adding a ref to a function component\n2. You may be adding a ref to a component that was not created inside a component's render method\n3. You have multiple copies of React loaded\nSee https://fb.me/react-refs-must-have-owner for more information.");
                 }
@@ -11525,21 +11525,21 @@
               return existing;
             }
           }
-          function updateElement(returnFiber, current2, element, expirationTime) {
+          function updateElement(returnFiber, current2, element2, expirationTime) {
             if (current2 !== null) {
-              if (current2.elementType === element.type || isCompatibleFamilyForHotReloading(current2, element)) {
-                var existing = useFiber(current2, element.props);
-                existing.ref = coerceRef(returnFiber, current2, element);
+              if (current2.elementType === element2.type || isCompatibleFamilyForHotReloading(current2, element2)) {
+                var existing = useFiber(current2, element2.props);
+                existing.ref = coerceRef(returnFiber, current2, element2);
                 existing.return = returnFiber;
                 {
-                  existing._debugSource = element._source;
-                  existing._debugOwner = element._owner;
+                  existing._debugSource = element2._source;
+                  existing._debugOwner = element2._owner;
                 }
                 return existing;
               }
             }
-            var created = createFiberFromElement(element, returnFiber.mode, expirationTime);
-            created.ref = coerceRef(returnFiber, current2, element);
+            var created = createFiberFromElement(element2, returnFiber.mode, expirationTime);
+            created.ref = coerceRef(returnFiber, current2, element2);
             created.return = returnFiber;
             return created;
           }
@@ -11917,20 +11917,20 @@
             created.return = returnFiber;
             return created;
           }
-          function reconcileSingleElement(returnFiber, currentFirstChild, element, expirationTime) {
-            var key = element.key;
+          function reconcileSingleElement(returnFiber, currentFirstChild, element2, expirationTime) {
+            var key = element2.key;
             var child = currentFirstChild;
             while (child !== null) {
               if (child.key === key) {
                 switch (child.tag) {
                   case Fragment: {
-                    if (element.type === REACT_FRAGMENT_TYPE) {
+                    if (element2.type === REACT_FRAGMENT_TYPE) {
                       deleteRemainingChildren(returnFiber, child.sibling);
-                      var existing = useFiber(child, element.props.children);
+                      var existing = useFiber(child, element2.props.children);
                       existing.return = returnFiber;
                       {
-                        existing._debugSource = element._source;
-                        existing._debugOwner = element._owner;
+                        existing._debugSource = element2._source;
+                        existing._debugOwner = element2._owner;
                       }
                       return existing;
                     }
@@ -11938,14 +11938,14 @@
                   }
                   case Block:
                   default: {
-                    if (child.elementType === element.type || isCompatibleFamilyForHotReloading(child, element)) {
+                    if (child.elementType === element2.type || isCompatibleFamilyForHotReloading(child, element2)) {
                       deleteRemainingChildren(returnFiber, child.sibling);
-                      var _existing3 = useFiber(child, element.props);
-                      _existing3.ref = coerceRef(returnFiber, child, element);
+                      var _existing3 = useFiber(child, element2.props);
+                      _existing3.ref = coerceRef(returnFiber, child, element2);
                       _existing3.return = returnFiber;
                       {
-                        _existing3._debugSource = element._source;
-                        _existing3._debugOwner = element._owner;
+                        _existing3._debugSource = element2._source;
+                        _existing3._debugOwner = element2._owner;
                       }
                       return _existing3;
                     }
@@ -11959,13 +11959,13 @@
               }
               child = child.sibling;
             }
-            if (element.type === REACT_FRAGMENT_TYPE) {
-              var created = createFiberFromFragment(element.props.children, returnFiber.mode, expirationTime, element.key);
+            if (element2.type === REACT_FRAGMENT_TYPE) {
+              var created = createFiberFromFragment(element2.props.children, returnFiber.mode, expirationTime, element2.key);
               created.return = returnFiber;
               return created;
             } else {
-              var _created4 = createFiberFromElement(element, returnFiber.mode, expirationTime);
-              _created4.ref = coerceRef(returnFiber, currentFirstChild, element);
+              var _created4 = createFiberFromElement(element2, returnFiber.mode, expirationTime);
+              _created4.ref = coerceRef(returnFiber, currentFirstChild, element2);
               _created4.return = returnFiber;
               return _created4;
             }
@@ -18528,18 +18528,18 @@ For more info, visit https://fb.me/react-mock-scheduler`);
           fiber.expirationTime = expirationTime;
           return fiber;
         }
-        function createFiberFromElement(element, mode, expirationTime) {
+        function createFiberFromElement(element2, mode, expirationTime) {
           var owner = null;
           {
-            owner = element._owner;
+            owner = element2._owner;
           }
-          var type = element.type;
-          var key = element.key;
-          var pendingProps = element.props;
+          var type = element2.type;
+          var key = element2.key;
+          var pendingProps = element2.props;
           var fiber = createFiberFromTypeAndProps(type, key, pendingProps, owner, mode, expirationTime);
           {
-            fiber._debugSource = element._source;
-            fiber._debugOwner = element._owner;
+            fiber._debugSource = element2._source;
+            fiber._debugOwner = element2._owner;
           }
           return fiber;
         }
@@ -18792,9 +18792,9 @@ For more info, visit https://fb.me/react-mock-scheduler`);
         function createContainer(containerInfo, tag, hydrate2, hydrationCallbacks) {
           return createFiberRoot(containerInfo, tag, hydrate2);
         }
-        function updateContainer(element, container, parentComponent, callback) {
+        function updateContainer(element2, container, parentComponent, callback) {
           {
-            onScheduleRoot(container, element);
+            onScheduleRoot(container, element2);
           }
           var current$1 = container.current;
           var currentTime = requestCurrentTimeForUpdate();
@@ -18820,7 +18820,7 @@ For more info, visit https://fb.me/react-mock-scheduler`);
           }
           var update = createUpdate(expirationTime, suspenseConfig);
           update.payload = {
-            element
+            element: element2
           };
           callback = callback === void 0 ? null : callback;
           if (callback !== null) {
@@ -19156,7 +19156,7 @@ For more info, visit https://fb.me/react-mock-scheduler`);
             return findHostInstanceWithWarning(componentOrElement, "findDOMNode");
           }
         }
-        function hydrate(element, container, callback) {
+        function hydrate(element2, container, callback) {
           if (!isValidContainer(container)) {
             {
               throw Error("Target container is not a DOM element.");
@@ -19168,9 +19168,9 @@ For more info, visit https://fb.me/react-mock-scheduler`);
               error("You are calling ReactDOM.hydrate() on a container that was previously passed to ReactDOM.createRoot(). This is not supported. Did you mean to call createRoot(container, {hydrate: true}).render(element)?");
             }
           }
-          return legacyRenderSubtreeIntoContainer(null, element, container, true, callback);
+          return legacyRenderSubtreeIntoContainer(null, element2, container, true, callback);
         }
-        function render2(element, container, callback) {
+        function render2(element2, container, callback) {
           if (!isValidContainer(container)) {
             {
               throw Error("Target container is not a DOM element.");
@@ -19182,9 +19182,9 @@ For more info, visit https://fb.me/react-mock-scheduler`);
               error("You are calling ReactDOM.render() on a container that was previously passed to ReactDOM.createRoot(). This is not supported. Did you mean to call root.render(element)?");
             }
           }
-          return legacyRenderSubtreeIntoContainer(null, element, container, false, callback);
+          return legacyRenderSubtreeIntoContainer(null, element2, container, false, callback);
         }
-        function unstable_renderSubtreeIntoContainer(parentComponent, element, containerNode, callback) {
+        function unstable_renderSubtreeIntoContainer(parentComponent, element2, containerNode, callback) {
           if (!isValidContainer(containerNode)) {
             {
               throw Error("Target container is not a DOM element.");
@@ -19195,7 +19195,7 @@ For more info, visit https://fb.me/react-mock-scheduler`);
               throw Error("parentComponent must be a valid React Component");
             }
           }
-          return legacyRenderSubtreeIntoContainer(parentComponent, element, containerNode, false, callback);
+          return legacyRenderSubtreeIntoContainer(parentComponent, element2, containerNode, false, callback);
         }
         function unmountComponentAtNode(container) {
           if (!isValidContainer(container)) {
@@ -19267,8 +19267,8 @@ For more info, visit https://fb.me/react-mock-scheduler`);
           }
           return createPortal(children, container, null, key);
         }
-        function renderSubtreeIntoContainer(parentComponent, element, containerNode, callback) {
-          return unstable_renderSubtreeIntoContainer(parentComponent, element, containerNode, callback);
+        function renderSubtreeIntoContainer(parentComponent, element2, containerNode, callback) {
+          return unstable_renderSubtreeIntoContainer(parentComponent, element2, containerNode, callback);
         }
         function unstable_createPortal(children, container) {
           var key = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : null;
@@ -19328,14 +19328,19 @@ For more info, visit https://fb.me/react-mock-scheduler`);
   // src/App.js
   const React = __toModule(require_react());
   const ReactDOM = __toModule(require_react_dom());
-  ReactDOM.render(React.createElement("div", {
-    className: "App"
-  }, React.createElement("header", {
-    className: "App-header"
-  }, React.createElement("img", {
-    src: "/logo.svg",
-    className: "App-logo",
-    alt: "logo"
-  }), React.createElement("h3", null, " Hi"), React.createElement("p", null, "Edit ", React.createElement("code", null, "src/App.js"), " to get started!"))), document.getElementById("root"));
+  function formatName(user2) {
+    return user2.firstName + " " + user2.lastName;
+  }
+  const user = {
+    firstName: "Harper",
+    lastName: "Perez"
+  };
+  const element = React.createElement("h1", null, "Hello, ", formatName(user), "!");
+  ReactDOM.render(element, document.getElementById("root"));
+  function tick() {
+    const element2 = React.createElement("div", null, React.createElement("h1", null, "Hello, world!"), React.createElement("h2", null, "It is ", new Date().toLocaleTimeString(), "."));
+    ReactDOM.render(element2, document.getElementById("root"));
+  }
+  setInterval(tick, 1e3);
 })();
 //# sourceMappingURL=bundle.js.map
