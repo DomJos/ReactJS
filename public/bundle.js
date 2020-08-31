@@ -19336,6 +19336,6 @@ For more info, visit https://fb.me/react-mock-scheduler`);
     src: "/logo.svg",
     className: "App-logo",
     alt: "logo"
-  }), React.createElement("h3", null, " React on Repl.it! "), React.createElement("p", null, "Edit ", React.createElement("code", null, "src/App.js"), " to get started!"))), document.getElementById("root"));
+  }), React.createElement("h3", null, " Hi"), React.createElement("p", null, "Edit ", React.createElement("code", null, "src/App.js"), " to get started!"))), document.getElementById("root"));
 })();
 //# sourceMappingURL=bundle.js.map
